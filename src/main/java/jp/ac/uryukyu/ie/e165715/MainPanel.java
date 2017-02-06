@@ -11,6 +11,7 @@ import javax.swing.*;
 public class MainPanel extends JPanel implements Runnable, MouseMotionListener {
     private Racket racket;// ラケット
     private Ball ball;//ボール
+    private Block[] block; // ブロック
 
     // パネルサイズ
     private static final int WIDTH = 500;
@@ -23,26 +24,22 @@ public class MainPanel extends JPanel implements Runnable, MouseMotionListener {
     // ブロック数
     private static final int NUM_BLOCK = NUM_BLOCK_ROW * NUM_BLOCK_COL;
 
-    private Block[] block; // ブロック
+
     private Thread thread;
 
     public MainPanel() {
 
-
-
-
-
-        // パネルの推奨サイズを設定、pack()するときに必要
+        // パネルの推奨サイズを設定、pack()するときに必要です。
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        // 変数などの初期化
+        // 変数などの初期化をします。
 
         addMouseMotionListener(this);
 
-        // ラケットを作成
+        // ラケット作成
         racket = new Racket();
-        //　ブロックを作成
+        //　ブロック作成
         block = new Block[NUM_BLOCK];
-        //　ボールを作成
+        //　ボール作成
         ball = new Ball();
         // ブロックを並べる
         for (int i = 0; i < NUM_BLOCK_ROW; i++) {
@@ -52,15 +49,13 @@ public class MainPanel extends JPanel implements Runnable, MouseMotionListener {
                 block[i * NUM_BLOCK_COL + j] = new Block(x, y);
             }
         }
+        //threadをスタートするとrunが走ります。
         thread = new Thread(this);
         thread.start();
 
     }
 
-    /**
-     * ゲームループ
-     *
-     */
+    //ゲームのメインループ
     public void run() {
 
         while (true) {

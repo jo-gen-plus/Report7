@@ -8,7 +8,6 @@ import java.awt.*;
 import javax.swing.*;
 
 public class BlockBreak extends JFrame {
-    private MainPanel mainpanel;
     public BlockBreak() {
         // タイトルを設定
         setTitle("ブロック崩し");

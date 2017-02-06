@@ -50,9 +50,6 @@ public class Block {
      * ブロックを消去
      */
     public void delete() {
-        // TODO: ここでブロックが壊れる効果音
-        // TODO: ここで派手なアクション
-
         isDeleted = true;
     }
 
